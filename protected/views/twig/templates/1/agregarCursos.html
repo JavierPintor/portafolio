@@ -1,0 +1,99 @@
+{% include 'includesAdmin/header.html' %}
+
+<div id="app" class="page">
+  <div class="main-wrapper page-main" >
+      {% include 'includesAdmin/nav.html' %} 
+
+      <div class="app-content">
+          <div class="section">
+              <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Página</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Cursos</li>
+                  
+              </ol>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="card">
+                          <div class="card-header">
+                              <h4>Cursos</h4>
+                              
+                          </div>
+
+                          <div class="card-body">
+                            <form id="frm1" name="frm1" action="{{pathCMSSite}}agregar-cursos" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <input type="hidden" name="idReg" id="idReg" value="" />
+                            <input type="hidden" name="Action" id="Action" value="" />
+                            <input  type="hidden" name="path" id="path" value="{{pathCMSSite}}" />
+                            <input type="hidden" name="idsave" id="idsave" value="{{datacurso.id}}"/>
+              
+                            <div class="form-group row">
+                              <label class="col-md-3 col-form-label text-right"> Curso </label>
+                              <div class="col-md-9">
+                              <input type="text" class="form-control form-control"
+                                id="txtcurso" name="txtcurso" value="{{datacurso.curso}}"/>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label class="col-md-3 col-form-label text-right"> Descripcion </label>
+                                <div class="col-md-9">
+                                <input type="text" class="form-control form-control"
+                                 id="txtdescripcion" name="txtdescripcion" value="{{datacurso.descripcion}}" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label text-right"> categorias </label>
+                                  <div class="col-md-9">
+                                    <select class="form-control" id="txtid_categorias" name="txtid_categorias" >
+                                     <option value="0">Seleccione una categoria</option>
+                                       
+                                        {% for key, value in categorias %}
+                                          {% if datacurso.id_categorias == value.id  %}
+                                          <option value="{{value.id}}" selected>{{datacurso.categorias}} </option>
+                                            {% else %}
+                                          <option value="{{value.id}}">{{value.categorias}} </option>
+                                          {% endif %}
+                                        {% endfor  %} 
+                                    </select>
+                                  </div>
+                            </div>
+              
+
+                            <div class="form-group text-right">
+                              <br />
+                              <div class="col-lg-offset-2 col-lg-10">
+                                <button
+                                  type="submit"
+                                  class="btn btn-sm btn-info"
+                                  name="cmdRegresar"
+                                  id="cmdRegresar"
+                                  data-action="cursos"
+                                  value="1"
+                                >
+                                  <i class="glyph-icon icon-angle-double-left"></i>
+                                  Regresar
+                                </button>
+                                <button
+                                  type="submit"
+                                  class="btn btn-sm btn-success"
+                                  name="cmdGuardar" value="guardar"
+                                >
+                                  <i class="glyph-icon icon-save"></i>
+                                  Guardar
+                                </button>
+                              </div>
+                            </div>
+                          </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+
+{% include 'includesAdmin/footerJS.html' %}
