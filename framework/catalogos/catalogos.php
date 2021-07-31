@@ -553,6 +553,8 @@ class Catalogos
         $camposD = substr($camposD, 0, -1);
         $valoresD = substr($valoresD, 0, -1);
         $ss = "INSERT INTO $tabla ($camposD) VALUES ($valoresD)";
+        // echo $ss;
+        // exit();
         $recordset = $bd->prepare($ss);
         $recordset->execute();
         $idReg = $bd->lastInsertId();

@@ -26,7 +26,7 @@ class ControllerLogout {
         $data["return"] = $this->conf["pathSite"];
         $data["tiempo"] = "3";
         $data["return"]=indexModel::bd($this->conf)->getMensaje($data);
-        $templa  = "mensajeBackEnd.html";
+        $templa  = "mensajeBackEnd.twig";
         $this->view->show($templa, $data, $this->accion);
 
     }
